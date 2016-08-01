@@ -87,6 +87,9 @@ var mainState = {
         // Call the 'restartGame' function
         if (this.bird.y < 0 || this.bird.y > 490)
             this.restartGame();
+
+        game.physics.arcade.overlap(
+            this.bird, this.pipes, this.restartGame, null, this);
     },
 
     // Make the bird jump
