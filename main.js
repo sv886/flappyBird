@@ -82,6 +82,24 @@ var mainState = {
 
     },
 
+    hitPipe: function() {
+        // If the bird has already hit a pipe, do nothing
+        // It means the bird is already falling off the screen
+        if (this.bird.alive == false)
+            return;
+
+        // Set the alive property of the bird to false
+        this.bird.alive = false;
+
+        // Prevent new pipes from appearing
+        game.time.events.remove(this.timer);
+
+        // Go through all the pipes, and stop their movement
+        this.pipes.forEach(function(p){
+            p.body.velocity.x = 0;
+        }, this);
+    },
+
     update: function() {
         // This function is called 60 times per second
         // It contains the game's logic
@@ -100,6 +118,9 @@ var mainState = {
 
     // Make the bird jump
     jump: function() {
+        if (this.bird.alive == false)
+            return;
+
         // Add a vertical velocity to the bird
         this.bird.body.velocity.y = -350;
 
@@ -114,24 +135,6 @@ var mainState = {
 
         // And start the animation
         // animation.start();
-    },
-
-    hitPipe: function() {
-        // If the bird has already hit a pipe, do nothing
-        // It means the bird is already falling off the screen
-        if (this.bird.alive == false)
-            return;
-
-        // Set the alive property of the bird to false
-        this.bird.alive = false;
-
-        // Prevent new pipes from appearing
-        game.time.events.remove(this.timer);
-
-        // Go through all the pipes, and stop their movement
-        this.pipes.forEach(function(p){
-            p.body.velocity.x = 0;
-        }, this);
     },
 
     // Restart the game
