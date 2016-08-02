@@ -77,6 +77,9 @@ var mainState = {
         this.labelScore = game.add.text(20, 20, "0",
             { font: "30px Arial", fill: "#ffffff" });
 
+        // Move the anchor to the left and downward
+        this.bird.anchor.setTo(-0.2, 0.5);
+
     },
 
     update: function() {
