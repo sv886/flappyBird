@@ -7,6 +7,7 @@ var mainState = {
         // Load the bird sprite
         game.load.image('bird', 'assets/bird.png');
         game.load.image('pipe', 'assets/pipe.png');
+        game.load.audio('jump', 'assets/grunt.mp3');
     },
 
     addOnePipe: function(x, y) {
@@ -79,6 +80,8 @@ var mainState = {
 
         // Move the anchor to the left and downward
         this.bird.anchor.setTo(-0.2, 0.5);
+
+        this.jumpSound = game.add.audio('jump');
 
     },
 
