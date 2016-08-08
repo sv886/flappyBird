@@ -138,6 +138,8 @@ var mainState = {
 
         // And start the animation
         // animation.start();
+
+        this.jumpSound.play(); 
     },
 
     // Restart the game
